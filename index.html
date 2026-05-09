@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,37 +11,20 @@
     <style>
         body { font-family: 'Montserrat', sans-serif; background-color: #0a0a0a; color: #f4f4f4; scroll-behavior: smooth; }
         .font-luxe { font-family: 'Cinzel', serif; }
-        
-        /* Gold Accent Color */
         .text-gold { color: #d4af37; }
         .bg-gold { background-color: #d4af37; }
-        
-        /* Premium Swiper Styling */
         .swiper { width: 100%; height: 100%; border-radius: 10px; }
         .swiper-slide img { width: 100%; height: 100%; object-fit: cover; }
         .swiper-pagination-bullet { background: #d4af37 !important; }
 
-        /* Floating WhatsApp Button */
         .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #25d366;
-            color: white;
-            padding: 15px 25px;
-            border-radius: 50px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: bold;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
-            z-index: 1000;
-            transition: all 0.3s ease;
-            text-decoration: none;
+            position: fixed; bottom: 30px; right: 30px; background-color: #25d366;
+            color: white; padding: 15px 25px; border-radius: 50px;
+            display: flex; align-items: center; gap: 10px; font-weight: bold;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4); z-index: 1000;
+            transition: all 0.3s ease; text-decoration: none;
         }
         .whatsapp-float:hover { transform: scale(1.1); background-color: #128c7e; }
-
-        /* Smooth Reveal */
         .reveal { opacity: 0; transform: translateY(30px); transition: 1s all ease; }
         .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
@@ -79,53 +62,72 @@
                     <div class="swiper-wrapper">
                         <div class="swiper-slide"><img src="traditional1.jpg" alt="Traditional 1"></div>
                         <div class="swiper-slide"><img src="traditional2.jpg" alt="Traditional 2"></div>
-                        <div class="swiper-slide"><img src="traditional3.jpg" alt="Traditional 3"></div>
-                        <div class="swiper-slide"><img src="traditional4.jpg" alt="Traditional 4"></div>
                     </div>
                     <div class="swiper-pagination"></div>
                     <div class="swiper-button-next text-gold"></div>
                     <div class="swiper-button-prev text-gold"></div>
                 </div>
             </div>
-
             <div class="reveal">
                 <span class="text-gold text-xs font-bold tracking-[0.3em] uppercase">Signature Piece</span>
                 <h3 class="text-5xl font-luxe my-6">Traditional <br> Peacock One-Piece</h3>
-                <p class="text-gray-400 font-light leading-relaxed mb-8">
-                    Humari sabse premium creation. Isme 4 alag detailing di gayi hai jo aap swipe karke dekh sakte hain. 
-                    Pure ethnic work with a modern silhouette.
-                </p>
+                <p class="text-gray-400 font-light leading-relaxed mb-8">Humari sabse premium creation. Pure ethnic work with a modern silhouette.</p>
                 <div class="text-3xl font-luxe mb-10 text-gold">₹599</div>
-                <a href="https://wa.me/919529766940?text=Hi, I want to order the Traditional One Piece" class="inline-block bg-white text-black px-12 py-5 text-[10px] font-black uppercase tracking-[0.3em] hover:bg-gold hover:text-white transition-all">Order via WhatsApp</a>
+                <a href="https://wa.me/919529766940?text=Order: Peacock One Piece" class="inline-block bg-white text-black px-12 py-5 text-[10px] font-black uppercase tracking-[0.3em] hover:bg-gold hover:text-white transition-all">Order via WhatsApp</a>
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+            
             <div class="reveal group">
-                <div class="relative overflow-hidden aspect-[4/5] bg-[#111]">
-                    <img src="ruffle.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-1000 opacity-80 group-hover:opacity-100">
+                <div class="relative overflow-hidden aspect-[3/4] bg-[#111]">
+                    <img src="dupatta.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-1000 opacity-80 group-hover:opacity-100">
+                    <div class="absolute bottom-4 right-4 bg-black/60 px-3 py-1 text-gold text-xs font-luxe italic">New</div>
                 </div>
-                <div class="mt-8 flex justify-between items-center">
-                    <div>
-                        <h4 class="text-xl font-luxe">Ruffle Skirt</h4>
-                        <p class="text-xs text-gray-600 mt-2">Summer Essentials</p>
-                    </div>
-                    <div class="text-gold text-xl font-luxe">₹399</div>
+                <div class="mt-6">
+                    <h4 class="text-lg font-luxe">Handmade Embroidery Dupatta</h4>
+                    <p class="text-[10px] text-gray-600 mt-1 uppercase tracking-widest">Intricate Threadwork</p>
+                    <div class="text-gold mt-3 font-luxe">₹1099</div>
+                    <a href="https://wa.me/919529766940?text=Hi, I want to order Handmade Embroidery Dupatta" class="text-[9px] uppercase tracking-widest text-gray-400 hover:text-gold mt-2 block underline">Order via WhatsApp</a>
                 </div>
             </div>
 
             <div class="reveal group">
-                <div class="relative overflow-hidden aspect-[4/5] bg-[#111]">
-                    <img src="scrunchies.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-1000 opacity-80 group-hover:opacity-100">
+                <div class="relative overflow-hidden aspect-[3/4] bg-[#111]">
+                    <img src="kurti.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-1000 opacity-80 group-hover:opacity-100">
                 </div>
-                <div class="mt-8 flex justify-between items-center">
-                    <div>
-                        <h4 class="text-xl font-luxe">Silk Scrunchie Set</h4>
-                        <p class="text-xs text-gray-600 mt-2">Pack of 3 • Handmade</p>
-                    </div>
-                    <div class="text-gold text-xl font-luxe">₹50</div>
+                <div class="mt-6">
+                    <h4 class="text-lg font-luxe">Designer Kurti</h4>
+                    <p class="text-[10px] text-gray-600 mt-1 uppercase tracking-widest">Modern Chic</p>
+                    <div class="text-gold mt-3 font-luxe">₹599</div>
+                    <a href="https://wa.me/919529766940?text=Hi, I want to order Designer Kurti" class="text-[9px] uppercase tracking-widest text-gray-400 hover:text-gold mt-2 block underline">Order via WhatsApp</a>
                 </div>
             </div>
+
+            <div class="reveal group">
+                <div class="relative overflow-hidden aspect-[3/4] bg-[#111]">
+                    <img src="ruffle.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-1000 opacity-80 group-hover:opacity-100">
+                </div>
+                <div class="mt-6">
+                    <h4 class="text-lg font-luxe">Ruffle Skirt</h4>
+                    <p class="text-[10px] text-gray-600 mt-1 uppercase tracking-widest">Summer Essentials</p>
+                    <div class="text-gold mt-3 font-luxe">₹399</div>
+                    <a href="https://wa.me/919529766940?text=Hi, I want to order Ruffle Skirt" class="text-[9px] uppercase tracking-widest text-gray-400 hover:text-gold mt-2 block underline">Order via WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="reveal group">
+                <div class="relative overflow-hidden aspect-[3/4] bg-[#111]">
+                    <img src="scrunchies.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-1000 opacity-80 group-hover:opacity-100">
+                </div>
+                <div class="mt-6">
+                    <h4 class="text-lg font-luxe">Silk Scrunchie Set</h4>
+                    <p class="text-[10px] text-gray-600 mt-1 uppercase tracking-widest">Pack of 3 • Handmade</p>
+                    <div class="text-gold mt-3 font-luxe">₹50</div>
+                    <a href="https://wa.me/919529766940?text=Hi, I want to order Scrunchies" class="text-[9px] uppercase tracking-widest text-gray-400 hover:text-gold mt-2 block underline">Order via WhatsApp</a>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -135,7 +137,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        // Initialize Swiper
         var swiper = new Swiper(".mySwiper", {
             loop: true,
             pagination: { el: ".swiper-pagination", clickable: true },
@@ -143,7 +144,6 @@
             autoplay: { delay: 3000 }
         });
 
-        // Reveal Animation
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
@@ -158,5 +158,6 @@
         reveal();
     </script>
 </body>
-    </html>
+</html>
+
     
