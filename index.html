@@ -1,96 +1,108 @@
-import React, { useState } from 'react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KOMDYRA GlowBeauty | Premium Boutique</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #fdfdfd; scroll-behavior: smooth; }
+        .font-serif-premium { font-family: 'Playfair Display', serif; }
+        .product-card { transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        .product-card:hover { transform: translateY(-12px); }
+        .glass-nav { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .hero-gradient { background: radial-gradient(circle at top right, #eff6ff 0%, #ffffff 100%); }
+    </style>
+</head>
+<body class="text-[#1a1a1a]">
 
-const ProductPage = () => {
-  const [activeImg, setActiveImage] = useState("traditional-1.jpg"); // Aapki main image ka path
+    <nav class="fixed top-0 w-full z-50 glass-nav border-b border-gray-100/50">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex flex-col">
+                <h1 class="text-2xl font-extrabold tracking-tighter uppercase leading-none">KOMDYRA</h1>
+                <p class="text-[9px] uppercase tracking-[4px] text-blue-600 font-black mt-1">GlowBeauty</p>
+            </div>
+            
+            <div class="hidden md:flex space-x-12 text-[13px] font-bold uppercase tracking-widest text-gray-400">
+                <a href="#shop" class="hover:text-black transition">The Collection</a>
+                <a href="#about" class="hover:text-black transition">Our Story</a>
+            </div>
 
-  return (
-    <div className="min-h-screen bg-[#faf9f6] text-[#2c2c2c] font-sans">
-      {/* Navigation (Minimalist) */}
-      <nav className="p-6 flex justify-between items-center border-b border-gray-100 bg-white/80 backdrop-blur-md sticky top-0 z-50">
-        <h1 className="text-2xl font-serif tracking-widest uppercase italic">The Boutique</h1>
-        <div className="space-x-8 text-sm uppercase tracking-wider font-medium">
-          <a href="#" className="hover:text-gold-600 transition">Collection</a>
-          <a href="#" className="hover:text-gold-600 transition">About</a>
-          <a href="#" className="bg-black text-white px-6 py-2 rounded-full">Cart (0)</a>
+            <a href="https://wa.me/919529766940" class="bg-black text-white px-8 py-3.5 rounded-full text-xs font-bold hover:bg-blue-600 transition shadow-xl shadow-black/5 active:scale-95">
+                ORDER ON WHATSAPP
+            </a>
         </div>
-      </nav>
+    </nav>
 
-      <main className="max-w-7xl mx-auto px-4 py-12 lg:flex gap-16">
-        
-        {/* LEFT: Image Gallery (Sticky) */}
-        <div className="lg:w-1/2">
-          <div className="sticky top-28 space-y-4">
-            <div className="overflow-hidden rounded-2xl shadow-sm bg-white">
-              <img 
-                src={activeImg} 
-                alt="Main Product" 
-                className="w-full h-auto object-cover hover:scale-105 transition duration-700"
-              />
+    <header class="pt-48 pb-24 px-6 hero-gradient overflow-hidden">
+        <div class="max-w-7xl mx-auto text-center relative">
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-blue-200/20 blur-[100px] -z-10"></div>
+            <span class="inline-block px-5 py-2 mb-8 text-[10px] font-black tracking-[0.3em] text-blue-700 uppercase bg-blue-50 border border-blue-100 rounded-full italic">Established 2026</span>
+            <h2 class="text-6xl md:text-8xl font-serif-premium italic mb-10 leading-[1.1] tracking-tight">Handcrafted <br/><span class="text-blue-600 not-italic font-extrabold">Elegance.</span></h2>
+            <p class="text-gray-400 max-w-2xl mx-auto text-lg md:text-xl mb-12 font-medium leading-relaxed italic">"Luxury handmade fashion and beauty essentials curated by Komal Gunjal for the modern woman."</p>
+            <a href="#shop" class="group relative inline-flex items-center gap-3 bg-gray-900 text-white px-12 py-5 rounded-full font-bold hover:bg-black transition-all shadow-2xl">
+                Explore Shop
+                <span class="group-hover:translate-x-1 transition-transform">→</span>
+            </a>
+        </div>
+    </header>
+
+    <section id="shop" class="max-w-7xl mx-auto px-6 py-32">
+        <div class="flex justify-between items-end mb-16">
+            <div>
+                <h3 class="text-3xl font-extrabold tracking-tighter">FEATURED PIECES</h3>
+                <div class="w-12 h-1 bg-blue-600 mt-2"></div>
             </div>
-            {/* Thumbnails */}
-            <div className="flex gap-4 overflow-x-auto pb-2">
-              {["trad-1.jpg", "trad-2.jpg", "trad-3.jpg", "trad-4.jpg"].map((img, i) => (
-                <img 
-                  key={i}
-                  src={img}
-                  onClick={() => setActiveImage(img)}
-                  className="w-24 h-32 object-cover rounded-lg cursor-pointer border-2 border-transparent hover:border-black transition"
-                />
-              ))}
-            </div>
-          </div>
         </div>
 
-        {/* RIGHT: Product Details */}
-        <div className="lg:w-1/2 space-y-8 mt-10 lg:mt-0">
-          <div>
-            <span className="text-sm text-gray-500 uppercase tracking-[0.2em]">New Arrival</span>
-            <h2 className="text-5xl font-serif mt-2 mb-4">Traditional Peacock Elegance</h2>
-            <p className="text-3xl font-light text-gray-800">₹4,999.00</p>
-          </div>
-
-          <p className="text-gray-600 leading-relaxed text-lg">
-            Experience the perfect blend of tradition and modern flair. This hand-crafted piece features intricate peacock motifs and a flattering silhouette designed for grand celebrations.
-          </p>
-
-          {/* Premium Infographic Section (Inspired by your images) */}
-          <div className="grid grid-cols-2 gap-4">
-            <div className="p-4 border border-gray-200 rounded-xl bg-white shadow-sm hover:shadow-md transition">
-              <span className="block font-bold mb-1">Premium Fabric</span>
-              <span className="text-sm text-gray-500 italic">Soft, breathable & airy</span>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+            
+            <div class="product-card group">
+                <div class="relative rounded-[40px] overflow-hidden bg-gray-50 aspect-[3/4.5] shadow-sm border border-gray-100">
+                    <img src="https://raw.githubusercontent.com/[USER]/[REPO]/main/1000311081.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-1000" alt="Ruffle Skirt">
+                    <div class="absolute top-6 left-6">
+                        <span class="bg-white shadow-xl px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest">Trending</span>
+                    </div>
+                </div>
+                <div class="mt-8 text-center px-2">
+                    <h4 class="text-xl font-bold tracking-tight">Ruffle Skirt</h4>
+                    <p class="text-blue-500 text-[10px] mb-3 font-bold tracking-[0.2em] uppercase">Fashion Luxe</p>
+                    <p class="text-2xl font-black text-gray-900 mb-4">₹399</p>
+                    <a href="https://wa.me/919529766940" class="inline-block border-b-2 border-black pb-1 text-xs font-black hover:text-blue-600 hover:border-blue-600 transition">INQUIRE NOW</a>
+                </div>
             </div>
-            <div className="p-4 border border-gray-200 rounded-xl bg-white shadow-sm hover:shadow-md transition">
-              <span className="block font-bold mb-1">Traditional Art</span>
-              <span className="text-sm text-gray-500 italic">Authentic peacock border</span>
+
+            <div class="product-card group">
+                <div class="relative rounded-[40px] overflow-hidden bg-gray-50 aspect-[3/4.5] shadow-sm border border-gray-100">
+                    <img src="https://raw.githubusercontent.com/[USER]/[REPO]/main/1000311135.jpg" class="w-full h-full object-cover group-hover:scale-110 transition duration-1000" alt="Traditional">
+                    <span class="absolute top-6 left-6 bg-black text-white px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest">New Arrival</span>
+                </div>
+                <div class="mt-8 text-center px-2">
+                    <h4 class="text-xl font-bold tracking-tight">Ethnic Peacock Piece</h4>
+                    <p class="text-blue-500 text-[10px] mb-3 font-bold tracking-[0.2em] uppercase">Premium Wear</p>
+                    <p class="text-2xl font-black text-gray-900 mb-4">₹599</p>
+                    <a href="https://wa.me/919529766940" class="inline-block border-b-2 border-black pb-1 text-xs font-black hover:text-blue-600 hover:border-blue-600 transition">INQUIRE NOW</a>
+                </div>
             </div>
-          </div>
 
-          {/* Action Buttons */}
-          <div className="flex flex-col gap-4">
-            <button className="w-full bg-[#1a1a1a] text-white py-5 rounded-full text-lg font-medium hover:bg-black transition shadow-xl active:scale-95">
-              Add to Bag
-            </button>
-            <button className="w-full border border-black py-5 rounded-full text-lg font-medium hover:bg-gray-50 transition">
-              Wishlist ♡
-            </button>
-          </div>
+            </div>
+    </section>
 
-          {/* Trust Badges */}
-          <div className="flex justify-between pt-10 border-t border-gray-200 text-[11px] uppercase tracking-tighter text-gray-400 font-bold">
-            <span>✓ Easy To Wash</span>
-            <span>✓ Shrink-Resistant</span>
-            <span>✓ Colour Fast</span>
-            <span>✓ Free Shipping</span>
-          </div>
+    <footer class="bg-[#111] py-24 px-6 text-white overflow-hidden relative">
+        <div id="about" class="max-w-7xl mx-auto text-center relative z-10">
+            <h4 class="text-4xl font-serif-premium italic mb-4">KOMDYRA</h4>
+            <p class="text-blue-500 font-black text-[10px] tracking-[0.5em] uppercase mb-12 italic">By Komal Gunjal</p>
+            
+            <div class="flex flex-col md:flex-row justify-center items-center gap-10 mb-16 text-sm font-medium text-gray-400">
+                <span class="hover:text-white transition">WhatsApp: +91 95297 66940</span>
+                <span class="hover:text-white transition">Instagram: @komdyra_glowbeauty</span>
+            </div>
+
+            <p class="text-gray-600 text-[9px] uppercase tracking-[6px] opacity-50">© 2026 KOMDYRA GLOWBEAUTY • ALL RIGHTS RESERVED</p>
         </div>
-      </main>
+        <div class="absolute -bottom-10 left-0 w-full text-[15vw] font-black text-white/[0.02] leading-none pointer-events-none uppercase">KOMDYRA</div>
+    </footer>
 
-      {/* Footer / Scrunchie Add-on */}
-      <footer className="bg-white mt-20 py-10 px-6 text-center border-t border-gray-100">
-        <p className="text-sm text-gray-400 italic">Designed with love for your special moments.</p>
-      </footer>
-    </div>
-  );
-};
-
-export default ProductPage;
+</body>
+</html>
