@@ -13,181 +13,185 @@
         :root { 
             --gold: #e3c08d; 
             --dark-emerald: #0a2e26; 
-            --soft-white: #f8f8f8;
-            --bg-dark: #0f0f0f;
+            --bg-dark: #0a0a0a;
         }
         
         body { 
             font-family: 'Montserrat', sans-serif; 
             background-color: var(--bg-dark); 
-            color: var(--soft-white); 
+            color: #fff; 
             overflow-x: hidden;
         }
         
         .font-luxe { font-family: 'Cinzel', serif; }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: #111; }
-        ::-webkit-scrollbar-thumb { background: var(--gold); }
-
-        /* Premium Gradient Text */
-        .text-gold-gradient {
-            background: linear-gradient(to right, #e3c08d, #b8860b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        /* Feature 1: Cursor Glow (Pro Look) */
+        #cursor-glow {
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(227, 192, 141, 0.08) 0%, transparent 70%);
+            position: fixed; pointer-events: none; z-index: 0;
+            transform: translate(-50%, -50%); transition: 0.1s linear;
         }
 
-        /* Glassmorphism Header */
+        /* Feature 2: Scrolling Marquee */
+        .marquee {
+            overflow: hidden; white-space: nowrap;
+            background: rgba(227, 192, 141, 0.05);
+            padding: 15px 0; border-top: 1px solid rgba(227, 192, 141, 0.1);
+            border-bottom: 1px solid rgba(227, 192, 141, 0.1);
+        }
+        .marquee-content {
+            display: inline-block; animation: marquee 30s linear infinite;
+        }
+        @keyframes marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        /* Feature 3: Image Overlay & Quick View */
+        .product-image-container { position: relative; overflow: hidden; }
+        .product-overlay {
+            position: absolute; inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            opacity: 0; transition: 0.4s;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .product-card:hover .product-overlay { opacity: 1; }
+
+        /* Navigation Glassmorphism */
         nav { 
-            background: rgba(15, 15, 15, 0.9); 
+            background: rgba(10, 10, 10, 0.85); 
             backdrop-filter: blur(20px); 
-            border-bottom: 1px solid rgba(227, 192, 141, 0.1); 
+            border-bottom: 1px solid rgba(255,255,255,0.05); 
         }
 
-        /* Pro Hover Cards */
-        .product-card {
-            background: #161616;
-            border: 1px solid rgba(255,255,255,0.03);
-            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-        .product-card:hover {
-            border-color: var(--gold);
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-        }
-
-        /* Animated Button */
-        .btn-shop {
-            position: relative;
-            z-index: 1;
-            transition: color 0.4s;
-        }
-        .btn-shop::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 0; height: 100%;
-            background: var(--gold);
-            transition: width 0.4s;
-            z-index: -1;
-        }
-        .btn-shop:hover::before { width: 100%; }
-        .btn-shop:hover { color: #000; }
-
-        /* Reveal Animation */
         .reveal { opacity: 0; transform: translateY(30px); transition: 1s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
-
-        /* Swiper Fix */
-        .swiper-pagination-bullet-active { background: var(--gold) !important; }
     </style>
 </head>
 <body>
 
-    <a href="https://wa.me/919529766940" class="fixed bottom-8 right-8 z-[1000] group">
-        <div class="bg-[#25d366] text-white flex items-center gap-3 px-6 py-3 rounded-full shadow-2xl group-hover:scale-110 transition-transform">
-            <svg width="22" height="22" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.601 2.326z"/></svg>
-            <span class="font-semibold text-sm">WhatsApp Order</span>
-        </div>
-    </a>
+    <div id="cursor-glow"></div>
 
-    <nav class="p-5 flex justify-between items-center fixed top-0 w-full z-[500]">
+    <div class="w-full bg-[#e3c08d] text-black text-[9px] py-1 text-center font-bold tracking-[3px] uppercase z-[1000] relative">
+        Limited Edition 2026 Pieces • Handcrafted with Precision
+    </div>
+
+    <nav class="p-5 flex justify-between items-center sticky top-0 w-full z-[500]">
         <div class="flex flex-col">
-            <h1 class="text-xl md:text-2xl font-luxe tracking-[6px] text-gold-gradient uppercase">Komdyra</h1>
-            <p class="text-[7px] tracking-[3px] uppercase opacity-60">Handcrafted Elegance</p>
+            <h1 class="text-xl md:text-2xl font-luxe tracking-[6px] text-[#e3c08d] uppercase">Komdyra</h1>
+            <p class="text-[7px] tracking-[3px] opacity-60 uppercase">By Komal Gunjal</p>
         </div>
-        <div class="hidden md:flex gap-12 text-[9px] tracking-[4px] uppercase font-medium">
-            <a href="#collection" class="hover:text-[#e3c08d] transition-colors">Shop</a>
-            <a href="#" class="hover:text-[#e3c08d] transition-colors">Lookbook</a>
-            <a href="https://wa.me/919529766940" class="text-[#e3c08d] font-bold">Contact</a>
+        <div class="hidden md:flex gap-10 text-[9px] tracking-[4px] uppercase font-light">
+            <a href="#collection" class="hover:text-[#e3c08d] transition-colors">Catalogue</a>
+            <a href="#story" class="hover:text-[#e3c08d] transition-colors">Our Story</a>
+            <a href="https://wa.me/919529766940" class="text-[#e3c08d]">Contact</a>
         </div>
-        <a href="#collection" class="btn-shop border border-[#e3c08d] px-8 py-2 text-[9px] tracking-[3px] uppercase">
-            Browse
+        <a href="https://wa.me/919529766940" class="border border-[#e3c08d]/40 px-6 py-2 text-[9px] tracking-[3px] uppercase hover:bg-[#e3c08d] hover:text-black transition-all">
+            Inquiry
         </a>
     </nav>
 
-    <section class="h-screen flex flex-col justify-center items-center text-center px-6 relative overflow-hidden">
-        <div class="absolute w-[500px] h-[500px] bg-[#0a2e26] blur-[150px] rounded-full -top-20 -left-20 opacity-30"></div>
-        <div class="absolute w-[400px] h-[400px] bg-[#e3c08d] blur-[150px] rounded-full bottom-0 right-0 opacity-10"></div>
+    <section class="h-[90vh] flex flex-col justify-center items-center text-center px-6 relative overflow-hidden">
+        <h2 class="text-6xl md:text-[110px] font-luxe mb-6 reveal leading-none">The <span class="italic text-[#e3c08d]">Standard.</span></h2>
+        <p class="max-w-md text-gray-500 font-light tracking-[5px] text-[10px] uppercase leading-loose reveal">Where heritage craftsmanship meets the modern silhouette.</p>
         
-        <h2 class="text-5xl md:text-[100px] font-luxe mb-6 reveal leading-tight">Authentic <br> <span class="italic text-gold-gradient">Atelier.</span></h2>
-        <p class="max-w-md text-gray-500 font-light tracking-[4px] text-[10px] uppercase leading-loose reveal">Curated essentials for the modern connoisseur. 2026 Collection.</p>
-        
-        <div class="mt-16 reveal">
-            <div class="animate-bounce text-[#e3c08d]">
-                <svg width="30" height="30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-            </div>
+        <div class="mt-12 reveal">
+            <a href="#collection" class="inline-block px-12 py-5 border border-white/20 text-[10px] tracking-[4px] uppercase hover:bg-white hover:text-black transition-all">Explore Collection</a>
         </div>
     </section>
 
-    <section id="collection" class="max-w-7xl mx-auto px-6 py-24">
-        <div class="mb-20 text-center">
-            <span class="text-[#e3c08d] text-[10px] tracking-[8px] uppercase">Catalogue</span>
-            <h3 class="text-4xl font-luxe mt-4">Selected Pieces</h3>
+    <div class="marquee mb-24">
+        <div class="marquee-content text-[10px] tracking-[6px] uppercase font-light">
+            &nbsp; NEW ARRIVALS: HANDMADE EMBROIDERY DUPATTA • DESIGNER KURTI • RUFFLE SKIRT • SILK SCRUNCHIES •&nbsp;
+            NEW ARRIVALS: HANDMADE EMBROIDERY DUPATTA • DESIGNER KURTI • RUFFLE SKIRT • SILK SCRUNCHIES •&nbsp;
         </div>
+    </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+    <section id="collection" class="max-w-7xl mx-auto px-6 py-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
             
-            <div class="reveal product-card p-4">
-                <div class="overflow-hidden aspect-[4/5] bg-neutral-900 mb-6">
-                    <img src="images/dupatta.jpg" class="w-full h-full object-cover transition-transform duration-1000 hover:scale-110">
-                </div>
-                <div class="px-2">
-                    <div class="flex justify-between items-start mb-2">
-                        <h4 class="text-xs font-medium tracking-[2px] uppercase">Embroidery Dupatta</h4>
-                        <span class="text-[#e3c08d] font-luxe">₹1099</span>
+            <div class="reveal product-card group">
+                <div class="product-image-container aspect-[3/4] bg-[#111]">
+                    <img src="images/dupatta.jpg" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                    <div class="product-overlay">
+                        <a href="https://wa.me/919529766940?text=Order: Dupatta" class="bg-white text-black text-[9px] px-6 py-3 uppercase tracking-widest font-bold">Quick Order</a>
                     </div>
-                    <p class="text-[9px] text-gray-600 tracking-wider uppercase mb-6">Signature Handwork</p>
-                    <a href="https://wa.me/919529766940?text=Inquiry: Embroidery Dupatta" class="w-full block text-center py-4 border border-[#e3c08d]/20 text-[9px] tracking-[3px] uppercase hover:bg-[#e3c08d] hover:text-black transition-all">Request Order</a>
+                    <div class="absolute top-4 left-4 bg-[#e3c08d] text-black text-[8px] px-3 py-1 font-bold uppercase tracking-widest">New</div>
+                </div>
+                <div class="mt-6 text-center">
+                    <h4 class="text-sm font-luxe tracking-widest uppercase mb-1">Embroidery Dupatta</h4>
+                    <p class="text-[#e3c08d] text-lg font-luxe">₹1099</p>
                 </div>
             </div>
 
-            <div class="reveal product-card p-4" style="transition-delay: 0.1s;">
-                <div class="overflow-hidden aspect-[4/5] bg-neutral-900 mb-6">
-                    <img src="images/kurti.jpg" class="w-full h-full object-cover transition-transform duration-1000 hover:scale-110">
-                </div>
-                <div class="px-2">
-                    <div class="flex justify-between items-start mb-2">
-                        <h4 class="text-xs font-medium tracking-[2px] uppercase">Designer Kurti</h4>
-                        <span class="text-[#e3c08d] font-luxe">₹599</span>
+            <div class="reveal product-card group" style="transition-delay: 0.1s;">
+                <div class="product-image-container aspect-[3/4] bg-[#111]">
+                    <img src="images/kurti.jpg" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                    <div class="product-overlay">
+                        <a href="https://wa.me/919529766940?text=Order: Designer Kurti" class="bg-white text-black text-[9px] px-6 py-3 uppercase tracking-widest font-bold">Quick Order</a>
                     </div>
-                    <p class="text-[9px] text-gray-600 tracking-wider uppercase mb-6">Modern Ethnic</p>
-                    <a href="https://wa.me/919529766940?text=Inquiry: Designer Kurti" class="w-full block text-center py-4 border border-[#e3c08d]/20 text-[9px] tracking-[3px] uppercase hover:bg-[#e3c08d] hover:text-black transition-all">Request Order</a>
+                </div>
+                <div class="mt-6 text-center">
+                    <h4 class="text-sm font-luxe tracking-widest uppercase mb-1">Designer Kurti</h4>
+                    <p class="text-[#e3c08d] text-lg font-luxe">₹599</p>
                 </div>
             </div>
 
-            <div class="reveal product-card p-4" style="transition-delay: 0.2s;">
-                <div class="overflow-hidden aspect-[4/5] bg-neutral-900 mb-6">
-                    <img src="images/traditional.jpg" class="w-full h-full object-cover transition-transform duration-1000 hover:scale-110">
-                </div>
-                <div class="px-2">
-                    <div class="flex justify-between items-start mb-2">
-                        <h4 class="text-xs font-medium tracking-[2px] uppercase">Peacock One-Piece</h4>
-                        <span class="text-[#e3c08d] font-luxe">₹599</span>
+            <div class="reveal product-card group" style="transition-delay: 0.2s;">
+                <div class="product-image-container aspect-[3/4] bg-[#111]">
+                    <img src="images/ruffle.jpg" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                    <div class="product-overlay">
+                        <a href="https://wa.me/919529766940?text=Order: Ruffle Skirt" class="bg-white text-black text-[9px] px-6 py-3 uppercase tracking-widest font-bold">Quick Order</a>
                     </div>
-                    <p class="text-[9px] text-gray-600 tracking-wider uppercase mb-6">Featured Masterpiece</p>
-                    <a href="https://wa.me/919529766940?text=Inquiry: Peacock One-Piece" class="w-full block text-center py-4 border border-[#e3c08d]/20 text-[9px] tracking-[3px] uppercase hover:bg-[#e3c08d] hover:text-black transition-all">Request Order</a>
+                </div>
+                <div class="mt-6 text-center">
+                    <h4 class="text-sm font-luxe tracking-widest uppercase mb-1">Ruffle Skirt</h4>
+                    <p class="text-[#e3c08d] text-lg font-luxe">₹399</p>
+                </div>
+            </div>
+
+            <div class="reveal product-card group" style="transition-delay: 0.3s;">
+                <div class="product-image-container aspect-[3/4] bg-[#111]">
+                    <img src="images/scrunchies.jpg" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                    <div class="product-overlay">
+                        <a href="https://wa.me/919529766940?text=Order: Scrunchies" class="bg-white text-black text-[9px] px-6 py-3 uppercase tracking-widest font-bold">Quick Order</a>
+                    </div>
+                </div>
+                <div class="mt-6 text-center">
+                    <h4 class="text-sm font-luxe tracking-widest uppercase mb-1">Silk Scrunchies</h4>
+                    <p class="text-[#e3c08d] text-lg font-luxe">₹50</p>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <footer class="py-32 border-t border-white/5 bg-[#0a0a0a] text-center">
-        <div class="mb-12">
-            <h2 class="text-2xl font-luxe tracking-[10px] text-gold-gradient uppercase mb-4">Komdyra</h2>
-            <div class="w-12 h-[1px] bg-[#e3c08d] mx-auto"></div>
-        </div>
-        <div class="flex justify-center gap-8 text-[9px] tracking-[3px] uppercase text-gray-500 mb-12">
-            <a href="#" class="hover:text-[#e3c08d]">Instagram</a>
-            <a href="#" class="hover:text-[#e3c08d]">Privacy</a>
-            <a href="#" class="hover:text-[#e3c08d]">Shipping</a>
+    <footer class="py-24 border-t border-white/5 bg-[#0a0a0a] text-center px-6">
+        <div class="flex flex-col items-center gap-6 mb-12">
+            <h2 class="text-2xl font-luxe tracking-[10px] text-[#e3c08d] uppercase">Komdyra</h2>
+            <div class="flex gap-6 text-[9px] tracking-[4px] uppercase text-gray-500 font-light">
+                <a href="#" class="hover:text-[#e3c08d] transition-all">Instagram</a>
+                <a href="#" class="hover:text-[#e3c08d] transition-all">Shipping</a>
+                <a href="https://wa.me/919529766940" class="hover:text-[#e3c08d] transition-all">Contact</a>
+            </div>
         </div>
         <p class="text-[7px] tracking-[10px] uppercase opacity-20 italic">KOMDYRA BY KOMAL GUNJAL • MMXXVI</p>
     </footer>
 
+    <a href="https://wa.me/919529766940" class="fixed bottom-8 right-8 z-[1000] bg-[#25d366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform">
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.601 2.326z"/></svg>
+    </a>
+
     <script>
-        // Scroll Reveal Logic
+        // Cursor Glow
+        const glow = document.getElementById('cursor-glow');
+        document.addEventListener('mousemove', (e) => {
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+
+        // Scroll Reveal
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
@@ -199,8 +203,7 @@
             }
         }
         window.addEventListener("scroll", reveal);
-        reveal(); // Initial call
+        reveal();
     </script>
 </body>
 </html>
-
